@@ -21,7 +21,29 @@
    source .venv/bin/activate
    ```
 
-4. **Add the MCP to Claude**:  
+4. **Project structure**:
+   ```
+   scanpy_mcp
+   ├── data
+   │   └── filtered_gene_bc_matrices
+   │       └── hg19
+   │           ├── barcodes.tsv
+   │           ├── genes.tsv
+   │           └── matrix.mtx
+   ├── main.py
+   ├── pyproject.toml
+   ├── README.md
+   ├── requirements.txt
+   ├── server.py
+   ├── tools
+   │   ├── prep.py
+   │   └── read.py
+   ├── utils
+   │   └── prep.py
+   └── uv.lock
+   ```
+
+5. **Add the MCP to Claude**:  
    Edit the Claude config file located at:
 
    ```bash
