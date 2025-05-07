@@ -1,6 +1,5 @@
 from server import mcp
 
-import anndata as ad
 import scanpy as sc
 
 from utils.prep import read_10x_mtx
