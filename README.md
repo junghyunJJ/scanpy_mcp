@@ -56,10 +56,10 @@
    {
      "mcpServers": {
        "scanpy_mcp": {
-         "command": "uv",
+         "command": "/Users/jungj2/.local/bin/uv", # please update
          "args": [
            "--directory",
-           "{path_to_directory_containing_main.py}",
+           "/Users/jungj2/Dropbox/Metadata/mcp/scanpy_mcp", # please update
            "run",
            "main.py"
          ]
