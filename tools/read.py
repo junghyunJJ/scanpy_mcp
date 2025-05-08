@@ -11,7 +11,7 @@ def read_sc(
   savedir: str
 ) -> str:
   """
-  Read in the count matrix into an AnnData object (https://anndata.readthedocs.io/en/stable/), 
+  Read in the count matrix (i.e., matrix.mtx) into an AnnData object (https://anndata.readthedocs.io/en/stable/), 
   which holds many slots for annotations and different representations of the data.
   It also comes with its own HDF5-based file format: .h5ad.
 
