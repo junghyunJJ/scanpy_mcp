@@ -59,7 +59,7 @@
          "command": "/Users/jungj2/.local/bin/uv", # please update
          "args": [
            "--directory",
-           "/Users/jungj2/Dropbox/Metadata/mcp/scanpy_mcp", # please update
+           "/Users/jungj2/Dropbox/Metadata/mcp/testmc/scanpy_mcp", # please update
            "run",
            "main.py"
          ]
