@@ -6,5 +6,4 @@ from tools.prep import prep_filtering
 
 
 if __name__ == "__main__":
-  print("Starting MCP server...")
   mcp.run(transport="stdio")
