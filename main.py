@@ -6,4 +6,4 @@ from tools.prep import prep_filtering
 
 
 if __name__ == "__main__":
-  mcp.run(transport="stdio")
+  mcp.run()

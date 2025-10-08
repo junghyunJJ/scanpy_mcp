@@ -1,4 +1,3 @@
-from mcp.server.fastmcp import FastMCP
-from mcp.server.fastmcp.prompts import base
+from fastmcp import FastMCP
 
 mcp = FastMCP("scanpy_mcp")
