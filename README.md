@@ -43,7 +43,28 @@
    └── uv.lock
    ```
 
-5. **Add the MCP to Claude**:  
+5. **Configure OAuth credentials**:
+
+   a. **Create Google OAuth credentials**:
+      - Go to [Google Cloud Console](https://console.cloud.google.com/apis/credentials)
+      - Create OAuth 2.0 Client ID (Application type: Web application)
+      - Add authorized redirect URIs:
+        - `http://localhost:*/callback` (for local development)
+        - `https://your-domain.fastmcp.app/oauth2/callback` (for deployment)
+      - Copy Client ID and Client Secret
+
+   b. **Set up environment variables**:
+      ```bash
+      cp .env.example .env
+      # Edit .env with your credentials:
+      # GOOGLE_CLIENT_ID=your-client-id
+      # GOOGLE_CLIENT_SECRET=your-client-secret
+      # GOOGLE_BASE_URL=https://your-domain.fastmcp.app
+      ```
+
+   ⚠️ **SECURITY**: Never commit `.env` file to version control. It's already in `.gitignore`.
+
+6. **Add the MCP to Claude**:
    Edit the Claude config file located at:
 
    ```bash
@@ -56,14 +77,56 @@
    {
      "mcpServers": {
        "scanpy_mcp": {
-         "command": "/Users/jungj2/.local/bin/uv", # please update
+         "command": "/Users/jungj2/.local/bin/uv",
          "args": [
            "--directory",
-           "/Users/jungj2/Dropbox/Metadata/mcp/testmc/scanpy_mcp", # please update
+           "/path/to/scanpy_mcp",
            "run",
            "main.py"
          ]
        }
      }
    }
+   ```
+
+## Security Best Practices
+
+### Credential Management
+
+**DO**:
+- ✅ Store credentials in `.env` file (excluded from git)
+- ✅ Use environment variables in code
+- ✅ Copy `.env.example` as template
+- ✅ Use FastMCP secrets for deployment: `fastmcp secret set KEY value`
+- ✅ Rotate credentials if exposed
+
+**DON'T**:
+- ❌ Commit credentials to version control
+- ❌ Hard-code credentials in source files
+- ❌ Share `.env` file publicly
+- ❌ Reuse exposed credentials
+
+### Deployment with FastMCP
+
+```bash
+# Set secrets for deployment
+fastmcp secret set GOOGLE_CLIENT_ID "your-client-id"
+fastmcp secret set GOOGLE_CLIENT_SECRET "your-client-secret"
+fastmcp secret set GOOGLE_BASE_URL "https://your-domain.fastmcp.app"
+
+# Deploy server
+fastmcp deploy server.py
+```
+
+### If Credentials Are Exposed
+
+1. **Immediately revoke** credentials in Google Cloud Console
+2. **Generate new** OAuth Client ID and Secret
+3. **Update** `.env` with new credentials
+4. **Clean git history** to remove exposed secrets:
+   ```bash
+   git reset --soft HEAD~1
+   git add -A
+   git commit -m "Configure OAuth with environment variables"
+   git push --force
    ```

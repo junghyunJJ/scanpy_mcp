@@ -11,3 +11,11 @@ data/
 
 # Virtual environments
 .venv
+
+# Environment variables and secrets
+.env
+*.pem
+*.key
+secrets.json
+credentials.json
+config.local.json

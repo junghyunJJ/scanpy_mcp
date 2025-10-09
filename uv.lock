@@ -1845,6 +1845,7 @@ dependencies = [
     { name = "fastmcp" },
     { name = "ipykernel" },
     { name = "pandas" },
+    { name = "python-dotenv" },
     { name = "scanpy" },
 ]
 
@@ -1853,6 +1854,7 @@ requires-dist = [
     { name = "fastmcp", specifier = ">=2.12.4" },
     { name = "ipykernel", specifier = ">=6.30.1" },
     { name = "pandas", specifier = ">=2.3.3" },
+    { name = "python-dotenv", specifier = ">=1.1.1" },
     { name = "scanpy", specifier = ">=1.11.4" },
 ]
 
